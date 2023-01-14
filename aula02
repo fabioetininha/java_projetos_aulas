@@ -1,0 +1,139 @@
+Curso java Developer Full Stack - COTI Informatica
+Exercícios PÓS Aula 02 de 11/01/2023
+
+package principal;
+
+
+import java.util.Scanner;
+
+import entities.Funcionario;
+import repositories.FuncionarioRepository;
+
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		System.out.println
+						("\n *** CADASTRO DE FUNCIONARIOS ***\n");
+
+		Funcionario funcionario = new Funcionario();
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.println("Entre com o ID do funcionario.....: ");
+		funcionario.setIdFuncionario(Integer.parseInt(scanner.nextLine()));
+		
+		System.out.println("Entre com o nome do funcionario....: ");
+		funcionario.setNome(scanner.nextLine());
+		
+		System.out.println("Entre com a matricula do funcionario.....: ");
+		funcionario.setMatricula(scanner.nextLine());
+		
+		System.out.println("Entre com o cpf do funcionario....: ");
+		funcionario.setCpf(scanner.nextLine());
+		
+		System.out.println("\nDADOS DO FUNCIONARIO: ");
+		
+		System.out.println("\nID.....: " + funcionario.getIdFuncionario());
+
+		System.out.println("\nNOME.....: " + funcionario.getNome());
+		
+		System.out.println("\nMATRICULA.....: " + funcionario.getMatricula());
+
+		System.out.println("\nCPF.....: " + funcionario.getCpf());
+		
+		
+		try {
+			FuncionarioRepository funcionarioRepository = new FuncionarioRepository();
+			
+			funcionarioRepository.exportar(funcionario);
+			
+			System.out.println("\nFUNCIONARIO CADASTRADO COM SUCESSO!\n");
+			
+			System.out.println("\tID.........:" + funcionario.getIdFuncionario());
+			System.out.println("\tNOME.......:" + funcionario.getNome());
+			System.out.println("\tMATRICULA..:" + funcionario.getMatricula());
+			System.out.println("\tCPF........:" + funcionario.getCpf());
+			
+		}
+		
+		catch(Exception e) {
+			System.out.println("\nFALHA AO CADASTRAR USUARIO!");
+			
+			e.printStackTrace();
+			
+		}
+		
+		
+
+	}
+
+}
+
+
+package repositories;
+
+import java.io.PrintWriter;
+
+import entities.Funcionario;
+
+public class FuncionarioRepository {
+	
+	public void exportar(Funcionario funcionario) throws Exception {
+		
+		PrintWriter printWriter = new PrintWriter("D:\\CURSO - Java developer\\aula2 - 11 01 2023\\Aula 02 - 11-01-23\\exercicioaula02.txt");
+				
+		printWriter.write("\nDADOS DO FUNCIONÁRIO: ");
+		
+		printWriter.write("\nID.........: " + funcionario.getIdFuncionario());
+		printWriter.write("\nNOME.......: " + funcionario.getNome());
+		printWriter.write("\nMATRICULA..: " + funcionario.getMatricula());
+		printWriter.write("\nCPF........: " + funcionario.getCpf());
+		
+		printWriter.flush();
+		printWriter.close();
+		
+		
+	}
+
+}
+
+
+package entities;
+
+public class Funcionario {
+	
+	private Integer idFuncionario;
+	private String nome;
+	private String matricula;
+	private String cpf;
+	
+	
+	public Integer getIdFuncionario() {
+		return idFuncionario;
+	}
+	public void setIdFuncionario(Integer idFuncionario) {
+		this.idFuncionario = idFuncionario;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	
+
+}
