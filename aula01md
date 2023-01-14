@@ -1,0 +1,95 @@
+# java_projetos_aulas
+Aqui estão todos os exercícios e estudo pós aula, realizados para massificar e treinar o conhecimento adquirido.
+Exercicios da aula 01 de 09/01/2023
+
+package principal;
+
+import java.io.PrintWriter;
+
+import entities.Cliente;
+
+public class Program {
+	
+	public static void main(String[] args) {
+		System.out.println("\n *** CADASTRO CLIENTE *** \n");
+		
+			Cliente cliente = new Cliente();
+			
+			cliente.setIdCliente(1);
+			cliente.setNome("Fabio Rodrigues");
+			cliente.setEmail("fabioetininha@gmail.com");
+			cliente.setCpf("087.457.137-58");
+			
+			try {
+				PrintWriter printWriter = new PrintWriter("D:\\CURSO - Java developer\\aula1 - 09 01 2023\\Aula 01 - 09-01-23\\exercicioaula01.txt");
+				
+				printWriter.write("\nID DO CLIENTE: " + cliente.getIdCliente());
+				printWriter.write("\nNOME DO CLIENTE: " + cliente.getNome());
+				printWriter.write("\nEMAIL DO CLIENTE: " + cliente.getEmail());
+				printWriter.write("\nCPF DO CLIENTE: " + cliente.getCpf());
+				
+				printWriter.flush();
+				printWriter.close();
+				
+				System.out.println("DADOS DO CLIENTE CADASTRADOS COM SUCESSO!");
+			}
+				
+			
+			catch(Exception e){
+				System.out.println("ERRO AO CADASTRAR CLIENTE!");
+				e.printStackTrace();
+				
+			}
+		
+	}
+
+}
+
+
+
+package entities;
+
+public class Cliente {
+	
+	private Integer idCliente;
+	private String nome;
+	private String telefone;
+	private String email;
+	private String cpf;
+	
+	
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
+	
+
+}
+
